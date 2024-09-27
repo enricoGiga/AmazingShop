@@ -1,0 +1,5 @@
+/media/
+.idea
+.venv
+
+products_store/migrations

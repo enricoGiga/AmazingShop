@@ -1,0 +1,23 @@
+<!-- templates/products/product_list.html -->
+<h1>Available Products</h1>
+
+{% if is_buyer %}
+    {% for product in products %}
+        <div>
+            <h3>{{ product.name }}</h3>
+            <p>Code: {{ product.code }}</p>
+            <p>Price: ${{ product.price }}</p>
+            <p>Supplier: {{ product.supplier.name }}</p>
+            <!-- Check if the product has a main image -->
+            {% if product.main_image %}
+                <img src="{{ product.main_image.url }}" alt="{{ product.name }}" width="100">
+            {% else %}
+                <p>No image available.</p>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No products available.</p>
+    {% endfor %}
+{% else %}
+    <p>You do not have permission to view this page.</p>
+{% endif %}

@@ -9,8 +9,8 @@ from products_store import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('supplier/', views.supplier_dashboard, name='supplier_dashboard'),
-    path('buyer/', views.buyer_dashboard, name='buyer_dashboard'),
+    path('supplier/', views.SupplierDashboardView.as_view(), name='supplier_dashboard'),
+    path('buyer/', views.BuyerDashboardView.as_view(), name='buyer_dashboard'),
     path('login/', views.CustomLoginView.as_view(template_name='users/login.html'),
          name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'),

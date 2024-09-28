@@ -1,6 +1,6 @@
 # AmazingShop
 ### A minimalist website with a product listing.
-
+#### Languages/framework/technologies: Python3, Django, PostgreSQL database
 ## Prerequisites
 - Docker should be installed on your system. You can download it
   from [here](https://www.docker.com/get-started).
@@ -39,3 +39,8 @@ Once the Docker container is up and running, follow these steps:
  
 4. From the admin console, create users as needed and assign them to the appropriate groups (Buyer or Supplier).
 
+## Supplier Dashboard
+![sup_view.png](products_store%2Fstatic%2Fproducts_store%2Fsup_view.png)
+
+## Buyer Dashboard
+![buyer_view.png](products_store%2Fstatic%2Fproducts_store%2Fbuyer_view.png)

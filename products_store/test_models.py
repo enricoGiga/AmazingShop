@@ -7,17 +7,13 @@ from .models import Product, Supplier
 class ProductModelTests(TestCase):
 
     def setUp(self):
-        # Create a user for the supplier
         self.user = User.objects.create_user(username='supplier_user',
                                              password='password')
 
-        # Create a supplier for the products with the created user
         self.supplier = Supplier.objects.create(user=self.user, name='Test Supplier')
 
     def test_create_product(self):
-        # Create a valid product
         product = Product.objects.create(
-
             supplier=self.supplier,
             name='Test Product',
             product_code='TP001',
@@ -25,7 +21,6 @@ class ProductModelTests(TestCase):
             stock_status=Product.IN_STOCK
         )
 
-        # Check if the product was created successfully
         self.assertEqual(product.name, 'Test Product')
         self.assertEqual(product.product_code, 'TP001')
         self.assertEqual(product.price, 99.99)
@@ -45,7 +40,6 @@ class ProductModelTests(TestCase):
         self.assertEqual(str(product), 'Test Product (TP002)')
 
     def test_unique_together_constraint(self):
-        # Create a valid product
         Product.objects.create(
             supplier=self.supplier,
             name='Test Product',

@@ -1,29 +1,41 @@
 # AmazingShop
 ### A minimalist website with a product listing.
-## Introduction
-
-
-### System Requirements
-
-
-### Database structure:
-
 
 ## Prerequisites
 - Docker should be installed on your system. You can download it
   from [here](https://www.docker.com/get-started).
 
 ## Installation
-1. Clone this repository to your local machine and navigate to the local directory:
+### 1. Clone this repository to your local machine and navigate to the local directory:
+```bash
+  git clone https://github.com/enricoGiga/AmazingShop.git
+  cd AmazingShop
+```
 
+### 2. Build and Run Docker Containers
+
+Use Docker Compose to build and run the application:
+
+```bash
+docker-compose up
+```
+
+### 3. Migrate Database and Create Superuser
+
+Once the Docker container is up and running, follow these steps:
+
+1. Make migrations:
    ```bash
-   git clone https://github.com/enricoGiga/888SpectateDemoAPI.git
-   cd project-directory
-
-2. Set up the Dockers container:
+   docker-compose exec web python manage.py makemigrations  
+   ```
+2. Apply the migrations:
    ```bash
-   docker-compose up
-3. Once the Docker container is up and running
-
-
+   docker-compose exec web python manage.py migrate  
+   ```
+3. Create a superuser:
+   ```bash
+   docker-compose exec web python manage.py createsuperuser 
+   ```
+ 
+4. From the admin console, create users as needed and assign them to the appropriate groups (Buyer or Supplier).
 

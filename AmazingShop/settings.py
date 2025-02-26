@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'products_store',
+    'user.apps.UserConfig',
+    'products.apps.ProductsConfig',
     'crispy_forms',
     "crispy_bootstrap5",
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -58,7 +60,7 @@ LOGIN_URL = 'login'  # URL to redirect users to the login page
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'products_store/templates']
+        'DIRS': [BASE_DIR / 'user/templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {

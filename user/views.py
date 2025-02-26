@@ -5,12 +5,13 @@ from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.views import View
 
-from .models import Product, Supplier
+from products.models import Product
+from .models import Supplier
 
 
 @login_required(login_url='/login/')
 def home(request):
-    return render(request, 'products_store/home.html')
+    return render(request, 'home.html')
 
 
 class SupplierDashboardView(LoginRequiredMixin, View):
@@ -31,7 +32,7 @@ class SupplierDashboardView(LoginRequiredMixin, View):
             if cheaper.exists():
                 cheaper_analogues.append(cheaper.get())
 
-        return render(request, 'products_store/supplier_dashboard.html', {
+        return render(request, 'supplier_dashboard.html', {
             'products': products,
             'cheaper_analogues': cheaper_analogues
         })
@@ -42,7 +43,7 @@ class BuyerDashboardView(LoginRequiredMixin, View):
         if not request.user.groups.filter(name='Buyer').exists():
             return redirect('home')
         products = Product.objects.filter(stock_status='In stock')
-        return render(request, 'products_store/buyer_dashboard.html',
+        return render(request, 'buyer_dashboard.html',
                       {'products': products})
 
 

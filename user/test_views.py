@@ -2,7 +2,8 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
 
-from products_store.models import Supplier, Product
+from products.models import Product
+from user.models import Supplier
 
 
 class BuyerDashboardViewTests(TestCase):
@@ -86,7 +87,7 @@ class SupplierDashboardViewTest(TestCase):
         response = self.client.get(reverse('supplier_dashboard'), follow=True)
 
         # Check if the user gets the correct template
-        self.assertTemplateUsed(response, 'products_store/supplier_dashboard.html')
+        self.assertTemplateUsed(response, 'user/supplier_dashboard.html')
 
         # # Check if products and cheaper_analogues are in the context
         self.assertIn('products', response.context)

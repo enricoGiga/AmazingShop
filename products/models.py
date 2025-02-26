@@ -1,11 +1,4 @@
-from django.contrib.auth.models import AbstractUser, User
 from django.db import models
-
-
-class Supplier(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-
 
 class Product(models.Model):
     IN_STOCK = 'In stock'
@@ -16,7 +9,7 @@ class Product(models.Model):
         (OUT_OF_STOCK, 'Out of stock')
     ]
 
-    supplier = models.ForeignKey('Supplier',
+    supplier = models.ForeignKey('user.Supplier',
                                  on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     product_code = models.CharField(max_length=50)
